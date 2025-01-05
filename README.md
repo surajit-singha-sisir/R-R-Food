@@ -30,7 +30,7 @@ Our website provides a seamless experience for customers to explore and shop for
 The website is thoughtfully **designed and developed by [Kehem IT](https://kehem.com)**, ensuring a modern, user-friendly interface that aligns with the brand's organic ethos.
 
 ### Development Technologies
-- **Frontend**: [mastorsCDN Library](https://surajit-singha-sisir.github.io/mastorsCDN/mastors.css)
+- **Frontend**: [mastorsCDN Library](https://github.com/surajit-singha-sisir/mastorsCDN)
 - **Backend**: Django Framework
 
 ### Key Features:
