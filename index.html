@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R&R E-commerce Landing Page</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="shortcut icon" href="assets/logo-only.svg" type="image/x-icon">
+    <script src="scripts/scripts.js"></script>
+    <!-- MASTORS CDN -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/surajit-singha-sisir/mastorsCDN@v1.1/mastorsIcons/mastorsIcons.css">
+    <link rel="stylesheet" href="https://surajit-singha-sisir.github.io/mastorsCDN/mastors.css">
+    <script type="module" src="https://cdn.jsdelivr.net/gh/surajit-singha-sisir/mastorsCDN@v1.1/mastors.js"></script>
+    <link href="https://fonts.cdnfonts.com/css/anek-latin" rel="stylesheet">
+
+    <!-- XHR AXIOS -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar-1 navItem" id="myNavbar">
+        <section class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo-only.svg" alt="">
+                <span class="logo-texts">
+                    <p>R&R Food</p>
+                    <p>Source of Nature</p>
+                </span>
+            </a>
+            <div class="nav-items">
+                <span><a href="product.html">Products</a><i class="m-leaf"></i></span>
+                <span><a href="about-us.html">About Us</a><i class="m-v-card"></i></span>
+                <span><a href="contact.html">Contact</a><i class="m-location"></i></span>
+                <span><a href="cart.html"><p>Cart</p><div class="totalCart"><p id="totalCart">1</p></div></a><i class="m-shopping-cart1"></i></span>
+            </div>
+
+            <a href="javascript:void(0);" class="hamburger" onclick="toggleNavbar(this)">
+                <i class="m-m-hamburger"></i>
+            </a>
+        </section>
+        <div class="bg-dark" id="bg-dark"></div>
+    </nav>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+@import url(https://fonts.cdnfonts.com/css/anek-latin);
+:root {
+  --bg: #010409;
+  --section: #0d1117;
+  --div: #151b23;
+  --border: #3d444d;
+  --button1: #29903b;
+  --button2: #8957e5;
+  --text: #f0ffdc;
+  --sub-text: #9198a1;
+  --link: #308add;
+
+  --temp1: #00cc66;
+  --temp2: #3ff70b;
+  --temp3: #3871c2;
+  --temp4: #00adef;
+}
+
+body {
+  background-color: var(--bg);
+  font-family: Anek Latin, sans-serif;
+  color: var(--text);
+}
+
+/* NAV START */
+.navItem {
+  background-color: var(--section);
+}
+.navItem .logo {
+  height: 3rem;
+}
+.navItem .logo img {
+  width: auto;
+  height: inherit;
+}
+
+.navItem .logo .logo-texts {
+  display: flex;
+  flex-direction: column;
+}
+.navItem .logo .logo-texts p:first-child {
+  color: var(--temp1);
+  font-size: 1.5rem;
+}
+.navItem .logo .logo-texts p:last-child {
+  color: var(--temp4);
+  text-align: center;
+  font-size: 0.6rem;
+}
+nav.navbar-1 .nav-container .logo:hover {
+  padding: 0 !important;
+}
+
+.navItem .logo .logo-texts p:hover {
+  color: var(--text);
+}
+nav.navbar-1 .nav-container a {
+  color: var(--text);
+}
+nav.navbar-1 .nav-container a:hover {
+  color: var(--temp4) !important;
+  text-underline-offset: 0.8rem !important;
+  text-decoration-color: var(--temp4);
+}
+nav.navbar-1 .nav-container .nav-items span {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* CART */
+.totalCart {
+  position: relative;
+}
+.totalCart p {
+  position: absolute;
+  font-size: 0.8rem;
+  padding: 5px;
+  top: -2rem;
+  right: -1.5rem;
+}
+.totalCart p::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.5rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: var(--temp3);
+  z-index: -1;
+}
+.bg-dark {
+    background-color: var(--section);
+}
+
+@media screen and (max-width: 768px) {
+    .nav-items {
+        min-width: 15rem !important;
+        background-color: var(--div);
+    }
+  .totalCart p {
+    left: -1.3rem;
+    right: auto;
+  }
+  .totalCart p::before {
+    width: 1.2rem;
+  }
+}
+
+/* NAV END */
