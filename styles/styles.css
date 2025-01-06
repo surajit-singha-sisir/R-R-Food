@@ -23,6 +23,9 @@ body {
 }
 
 /* NAV START */
+nav.navItem {
+  box-shadow: 1px 1px 1px var(--border) !important;
+}
 .navItem {
   background-color: var(--section);
 }
@@ -91,14 +94,14 @@ nav.navbar-1 .nav-container .nav-items span {
   z-index: -1;
 }
 .bg-dark {
-    background-color: var(--section);
+  background-color: var(--section);
 }
 
 @media screen and (max-width: 768px) {
-    .nav-items {
-        min-width: 15rem !important;
-        background-color: var(--div);
-    }
+  .nav-items {
+    min-width: 15rem !important;
+    background-color: var(--div);
+  }
   .totalCart p {
     left: -1.3rem;
     right: auto;
@@ -109,3 +112,69 @@ nav.navbar-1 .nav-container .nav-items span {
 }
 
 /* NAV END */
+
+/* INTRO SLIDER */
+.intro-slider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* overflow: hidden; */
+}
+.intro-slider .left-side {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text);
+}
+.intro-slider .left-side h1 {
+  font-size: 3rem;
+}
+
+.intro-slider .right-slider {
+  position: absolute;
+  right: 0;
+  height: inherit;
+}
+.intro-slider .right-slider .mockup {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  height: inherit;
+}
+.intro-slider .right-slider .mockup img {
+  width: auto;
+  object-fit: cover;
+  object-position: center;
+  height: inherit;
+}
+
+
+.intro-slider .right-slider .slide-product {
+  position: relative;
+  width: 60vw;
+  height: 74%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.intro-slider .right-slider .slide-product .product {
+  position: absolute;
+  right: 50%;
+}
+.intro-slider .right-slider .slide-product .product img {
+  height: 100%;
+  object-fit: cover;
+  width: auto;
+}
+
+.product-1 {
+  height: 70%;
+  bottom: 0;
+}
+
+/* INTRO SLIDER */
