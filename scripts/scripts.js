@@ -26,7 +26,46 @@ function toggleNavbar(hamb) {
         document.removeEventListener("click", handleOutsideClick);
       }
     };
-
     document.addEventListener("click", handleOutsideClick);
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const products = document.querySelectorAll(".slide-product .product");
+
+  let currentIndex = 0;
+  const totalProducts = products.length;
+
+  products[currentIndex].classList.add("inAnimation");
+  products[currentIndex].style =
+    "height: 70%; bottom: 0; right: 50%; z-index: 3;";
+
+  // LOOPING
+  setInterval(() => {
+    products[currentIndex].classList.add("inAnimation");
+    products[currentIndex].style =
+      "height: 35%; bottom: 5rem; right: 50%; z-index: 3;";
+
+    const currentProduct = products[currentIndex];
+    const nextIndex = (currentIndex + 1) % totalProducts;
+    const nextProduct = products[nextIndex];
+
+    // inAnimation <-> betweenAnimation
+    currentProduct.classList.remove("inAnimation");
+    currentProduct.classList.add("betweenAnimation");
+
+    // betweenAnimation <-> outAnimation
+    setTimeout(() => {
+      currentProduct.classList.remove("betweenAnimation");
+      currentProduct.classList.add("outAnimation");
+      currentProduct.style = "height: 70%; right: -100%; z-index: 1;"; // Lower z-index for outgoing product
+    }, 3000);
+
+    // NEXT PRODUCT
+    nextProduct.classList.remove("outAnimation");
+    nextProduct.classList.add("inAnimation");
+    nextProduct.style = "height: 70%; bottom: 0; right: 50%; z-index: 5;";
+
+    currentIndex = nextIndex;
+  }, 3000);
+});

@@ -150,7 +150,6 @@ nav.navbar-1 .nav-container .nav-items span {
   height: inherit;
 }
 
-
 .intro-slider .right-slider .slide-product {
   position: relative;
   width: 60vw;
@@ -160,21 +159,92 @@ nav.navbar-1 .nav-container .nav-items span {
   justify-content: center;
   align-items: center;
   z-index: 1;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .intro-slider .right-slider .slide-product .product {
   position: absolute;
-  right: 50%;
+  right: -100%;
+  transition: all 0.3s ease;
 }
 .intro-slider .right-slider .slide-product .product img {
   height: 100%;
   object-fit: cover;
   width: auto;
+  transition: all 0.3s ease;
 }
 
 .product-1 {
   height: 70%;
   bottom: 0;
+}
+.inAnimation {
+  animation: inAnimation 2s ease-in-out;
+}
+@keyframes inAnimation {
+  0% {
+    height: 50%;
+    bottom: 3rem;
+    right: -100%;
+    rotate: 60deg;
+  }
+  80% {
+    height: 75%;
+    bottom: 0;
+    right: 52%;
+    rotate: 0;
+  }
+  100% {
+    height: 70%;
+    bottom: 0;
+    right: 50%;
+    rotate: 0;
+  }
+}
+
+.intro-slider .right-slider .slide-product .product:hover {
+  transform: scale(1.1) translateY(-1rem);
+}
+
+.outAnimation {
+  animation: outAnimation 2s ease-in-out;
+}
+@keyframes outAnimation {
+  0% {
+    height: 35%;
+    bottom: 5rem;
+    right: 50%;
+  }
+  100% {
+    height: 50%;
+    bottom: 0;
+    right: -100%;
+  }
+}
+
+.betweenAnimation {
+  animation: betweenAnimation 2s ease-in-out;
+}
+@keyframes betweenAnimation {
+  0% {
+    height: 70%;
+    bottom: 0;
+    right: 50%;
+    rotate: 0;
+  }
+  50% {
+    height: 50%;
+    bottom: 3rem;
+    right: 80%;
+    rotate: 5deg;
+  }
+  100% {
+    height: 35%;
+    bottom: 5rem;
+    right: 50%;
+    rotate: 0;
+  }
 }
 
 /* INTRO SLIDER */
