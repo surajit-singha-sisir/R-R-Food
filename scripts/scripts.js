@@ -69,3 +69,24 @@ document.addEventListener("DOMContentLoaded", () => {
     currentIndex = nextIndex;
   }, 3000);
 });
+
+// LOGO MOUSE OVER ANIMATION
+document.addEventListener("DOMContentLoaded", function () {
+  const image = document.querySelector(".dynamic-image");
+  const aboutUsRight = document.querySelector(".about-us-right");
+
+  aboutUsRight.addEventListener("mousemove", (e) => {
+    const rect = aboutUsRight.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const moveX = (x / rect.width - 0.5) * 30;
+    const moveY = (y / rect.height - 0.5) * 30;
+
+    image.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1)`;
+  });
+
+  aboutUsRight.addEventListener("mouseleave", () => {
+    image.style.transform = "translate(0, 0) scale(1)";
+  });
+});

@@ -10,12 +10,25 @@
   --sub-text: #9198a1;
   --link: #308add;
 
-  --temp1: #00cc66;
+  --temp1: #6dd26d;
   --temp2: #3ff70b;
-  --temp3: #3871c2;
+  --temp3: #3871c3;
   --temp4: #00adef;
+  --temp5: #3871c2;
+  --temp6: #028303;
 }
-
+.width-90 {
+  width: 90%;
+  margin: 0 auto;
+}
+hr {
+  border: none;
+  height: 1px;
+  background-color: var(--border);
+}
+.divider {
+  padding: 2rem 0;
+}
 body {
   background-color: var(--bg);
   font-family: Anek Latin, sans-serif;
@@ -133,6 +146,7 @@ nav.navbar-1 .nav-container .nav-items span {
 }
 .intro-slider .left-side h1 {
   font-size: 3rem;
+  color: var(--temp1);
 }
 
 .intro-slider .left-side > * {
@@ -248,7 +262,7 @@ nav.navbar-1 .nav-container .nav-items span {
     height: 50%;
     bottom: 3rem;
     right: 80%;
-    rotate: 5deg;
+    rotate: 15deg;
   }
   100% {
     height: 35%;
@@ -328,5 +342,77 @@ nav.navbar-1 .nav-container .nav-items span {
   .left-side {
     bottom: 100%;
   }
+  .slider-bgText {
+    margin-left: 0;
+    font-size: 20vw;
+  }
 }
 /* INTRO SLIDER */
+
+/* ABOUT US */
+.heading {
+  position: relative;
+  font-size: 2.5rem;
+  text-align: center;
+}
+.about-us {
+  position: relative;
+  height: max-content;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+.heading::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5rem;
+  height: 1px;
+  background-color: var(--border);
+}
+.about-us-right {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  flex: 0 0 50%;
+  perspective: 800px;
+  scrollbar-width: none;
+}
+
+.about-us-right::-webkit-scrollbar {
+  display: none;
+}
+
+.about-us-right img {
+  width: inherit;
+  height: 50%;
+  transform-origin: center;
+  /* animation: flip3D 3s infinite ease-in-out; */
+  transition: transform 0.3s ease-out;
+}
+
+@keyframes flip3D {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(10deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+@media screen and (max-width: 768px) {
+  .about-us {
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    text-align: center;
+    text-align: justify;
+    gap: 2rem;
+  }
+}
+
+/* ABOUT US */
