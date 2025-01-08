@@ -89,4 +89,20 @@ document.addEventListener("DOMContentLoaded", function () {
   aboutUsRight.addEventListener("mouseleave", () => {
     image.style.transform = "translate(0, 0) scale(1)";
   });
+
+  updatePrice();
 });
+
+// UPPDATING PRICE
+function updatePrice() {
+  const updatingPrice = document.querySelectorAll(".updatingPrice");
+  updatingPrice.forEach((price) => {
+    const productPrice = price.querySelector(".product-price");
+    const updatePrice = price.querySelector(".updated-price");
+
+    if (updatePrice) {
+      productPrice.classList.toggle("updatingPrice-active");
+    }
+  });
+}
+
