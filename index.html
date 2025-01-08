@@ -34,12 +34,15 @@
                 <span><a href="product.html">Products</a><i class="m-leaf"></i></span>
                 <span><a href="about-us.html">About Us</a><i class="m-v-card"></i></span>
                 <span><a href="contact.html">Contact</a><i class="m-location"></i></span>
-                <span><a href="cart.html">
+                <span id="modalBox-1" class="cur-pointer">
+                    <div>
                         <p>Cart</p>
                         <div class="totalCart">
                             <p id="totalCart">1</p>
                         </div>
-                    </a><i class="m-shopping-cart1"></i></span>
+                    </div>
+                    <i class="m-shopping-cart1"></i>
+                </span>
             </div>
 
             <a href="javascript:void(0);" class="hamburger" onclick="toggleNavbar(this)">
@@ -96,13 +99,15 @@
                             <div class="rating"><i class="m-m-5-star Gold"></i></div>
                         </span>
                         <span class="cols-2">
-                            <button class="cart btn btn-outline-warning" id="cart"><i class="m-plus-circle"></i>
-                                Cart</button>
+                            <button class="cart btn btn-outline-warning" id="cart" onclick="cart(this)"><i
+                                    class="m-plus-circle"></i>
+                                <p>Cart</p>
+                                <div class=""></div>
+                            </button>
                         </span>
-
                     </div>
                 </a>
-                
+
                 <!-- PRODUCT -->
                 <a href="javascript:void(0)" class="product-item">
                     <div class="product-image"><img src="assets/product-2.png" alt=""></div>
@@ -116,13 +121,16 @@
                             <div class="rating"><i class="m-m-5-star Gold"></i></div>
                         </span>
                         <span class="cols-2">
-                            <button class="cart btn btn-outline-warning" id="cart"><i class="m-plus-circle"></i>
-                                Cart</button>
+                            <button class="cart btn btn-outline-warning" id="cart" onclick="cart(this)">
+                                <i class="m-plus-circle"></i>
+                                <p>Cart</p>
+                                <div></div>
+                            </button>
                         </span>
 
                     </div>
                 </a>
-                
+
                 <!-- PRODUCT -->
                 <a href="javascript:void(0)" class="product-item">
                     <div class="product-image"><img src="assets/product-3.png" alt=""></div>
@@ -136,13 +144,16 @@
                             <div class="rating"><i class="m-m-5-star Gold"></i></div>
                         </span>
                         <span class="cols-2">
-                            <button class="cart btn btn-outline-warning" id="cart"><i class="m-plus-circle"></i>
-                                Cart</button>
+                            <button class="cart btn btn-outline-warning" id="cart" onclick="cart(this)"><i
+                                    class="m-plus-circle"></i>
+                                <p>Cart</p>
+                                <div></div>
+                            </button>
                         </span>
 
                     </div>
                 </a>
-                
+
                 <!-- PRODUCT -->
                 <a href="javascript:void(0)" class="product-item">
                     <div class="product-image"><img src="assets/product-4.png" alt=""></div>
@@ -162,7 +173,7 @@
 
                     </div>
                 </a>
-                
+
                 <!-- PRODUCT -->
                 <a href="javascript:void(0)" class="product-item">
                     <div class="product-image"><img src="assets/product-5.png" alt=""></div>
@@ -176,13 +187,14 @@
                             <div class="rating"><i class="m-m-5-star Gold"></i></div>
                         </span>
                         <span class="cols-2">
-                            <button class="cart btn btn-outline-warning" id="cart"><i class="m-plus-circle"></i>
+                            <button class="cart btn btn-outline-warning" id="cart" onclick="cart(this)"><i
+                                    class="m-plus-circle"></i>
                                 Cart</button>
                         </span>
 
                     </div>
                 </a>
-                
+
                 <!-- PRODUCT -->
                 <a href="javascript:void(0)" class="product-item">
                     <div class="product-image"><img src="assets/product-6.png" alt=""></div>
@@ -202,7 +214,7 @@
 
                     </div>
                 </a>
-                
+
                 <!-- PRODUCT -->
                 <a href="javascript:void(0)" class="product-item">
                     <div class="product-image"><img src="assets/product-7.png" alt=""></div>
@@ -216,13 +228,14 @@
                             <div class="rating"><i class="m-m-5-star Gold"></i></div>
                         </span>
                         <span class="cols-2">
-                            <button class="cart btn btn-outline-warning" id="cart"><i class="m-plus-circle"></i>
+                            <button class="cart btn btn-outline-warning" id="cart" onclick="cart(this)"><i
+                                    class="m-plus-circle"></i>
                                 Cart</button>
                         </span>
 
                     </div>
                 </a>
-                
+
                 <!-- PRODUCT -->
                 <a href="javascript:void(0)" class="product-item">
                     <div class="product-image"><img src="assets/product-8.png" alt=""></div>
@@ -236,13 +249,14 @@
                             <div class="rating"><i class="m-m-5-star Gold"></i></div>
                         </span>
                         <span class="cols-2">
-                            <button class="cart btn btn-outline-warning" id="cart"><i class="m-plus-circle"></i>
+                            <button class="cart btn btn-outline-warning" id="cart" onclick="cart(this)"><i
+                                    class="m-plus-circle"></i>
                                 Cart</button>
                         </span>
 
                     </div>
                 </a>
-                
+
             </div>
         </section>
         <div class="divider"></div>
@@ -276,7 +290,197 @@
 
     </main>
 
+    <div id="modalOverlay" style="display: flex;" class="modal-overlay" target-bg="#00000093">
+        <div class="modal" modal-bg="var(--section)" modal-color="#fff" modal-width="80vw" modal-height="80vh"
+            scroller="true">
+            <div class="modal-abs">
+                <div class="cross-btn" id="closeModalBox"><i class="m-m-cross"></i></div>
+                <hr>
+            </div>
+            <div class="main-content">
+                <!-- STARTS -->
+                <div class="f gap-10 f-just-start f-align-items-center pad-b--10"><i class="m-cart"></i>
+                    <p class="text--13">Cart Products</p>
+                </div>
+                <!-- LIST -->
+                <table class="cart-table">
+                    <tbody>
+                        <tr>
+                            <td class="serials">1</td>
+                            <td>
+                                <div class="f f-col gap-10 w-max">
+                                    <!-- PRODUCT IMG -->
+                                    <div class="prod-img"><img src="assets/product-1.png" alt=""></div>
+                                    <!-- PRODUCT DETAILS -->
+                                    <p class="text-start text-dotted-3">Khejur Gur (Date Molasses)</p>
+                                    <table class="attributes">
+                                        <tbody>
+                                            <tr>
+                                                <td>Color</td>
+                                                <td>:</td>
+                                                <td>White</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Size</td>
+                                                <td>:</td>
+                                                <td>XL</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cart-quantity">
+                                    <button class="btn btn-sm btn-secondary" id="cart-plus"><i
+                                            class="m-plus-circle"></i></button>
+                                    <p id="updatedQty">5</p>
+                                    <button class="btn btn-sm btn-secondary" id="cart-minus">
+                                        <i class="m-minus-circle"></i></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="f f-col gap-10 f-center text--12">
+                                    <span class="f gap-10 f-center qtys">
+                                        <p id="qty">1</p>
+                                        <p>x</p>
+                                        <span class="f gap-05 f-center">
+                                            <p id="currency-symb">৳</p>
+                                            <p id="price">1020</p>
+                                        </span>
+                                    </span>
+                                    <div class="f gap-05 f-center text--15">
+                                        <p id="currency-symb">৳</p>
+                                        <p id="product-total">1030</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <button class="btn btn-error deleteCartBtn" onclick="deleteCart(this)">
+                                    <i class="m-trash White"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="serials">1</td>
+                            <td>
+                                <div class="f f-col gap-10 w-max">
+                                    <!-- PRODUCT IMG -->
+                                    <div class="prod-img"><img src="assets/product-1.png" alt=""></div>
+                                    <!-- PRODUCT DETAILS -->
+                                    <p class="text-start text-dotted-3">Khejur Gur (Date Molasses)</p>
+                                    <table class="attributes">
+                                        <tbody>
+                                            <tr>
+                                                <td>Color</td>
+                                                <td>:</td>
+                                                <td>White</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Size</td>
+                                                <td>:</td>
+                                                <td>XL</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cart-quantity">
+                                    <button class="btn btn-sm btn-secondary" id="cart-plus"><i
+                                            class="m-plus-circle"></i></button>
+                                    <p id="updatedQty">5</p>
+                                    <button class="btn btn-sm btn-secondary" id="cart-minus">
+                                        <i class="m-minus-circle"></i></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="f f-col gap-10 f-center text--12">
+                                    <span class="f gap-10 f-center qtys">
+                                        <p id="qty">1</p>
+                                        <p>x</p>
+                                        <span class="f gap-05 f-center">
+                                            <p id="currency-symb">৳</p>
+                                            <p id="price">1020</p>
+                                        </span>
+                                    </span>
 
+                                    <div class="f gap-05 f-center">
+                                        <p>Total =</p>
+                                        <p id="currency-symb">৳</p>
+                                        <p id="product-total">1030</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <button class="btn btn-error deleteCartBtn" onclick="deleteCart(this)">
+                                    <i class="m-trash White"></i>
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="serials">1</td>
+                            <td>
+                                <div class="f f-col gap-10 w-max">
+                                    <!-- PRODUCT IMG -->
+                                    <div class="prod-img"><img src="assets/product-1.png" alt=""></div>
+                                    <!-- PRODUCT DETAILS -->
+                                    <p class="text-start text-dotted-3">Khejur Gur (Date Molasses)</p>
+                                    <table class="attributes">
+                                        <tbody>
+                                            <tr>
+                                                <td>Color</td>
+                                                <td>:</td>
+                                                <td>White</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Size</td>
+                                                <td>:</td>
+                                                <td>XL</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="cart-quantity">
+                                    <button class="btn btn-sm btn-secondary" id="cart-plus"><i
+                                            class="m-plus-circle"></i></button>
+                                    <p id="updatedQty">5</p>
+                                    <button class="btn btn-sm btn-secondary" id="cart-minus">
+                                        <i class="m-minus-circle"></i></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="f f-col gap-10 f-center text--12">
+                                    <span class="f gap-10 f-center qtys">
+                                        <p id="qty">1</p>
+                                        <p>x</p>
+                                        <span class="f gap-05 f-center">
+                                            <p id="currency-symb">৳</p>
+                                            <p id="price">1020</p>
+                                        </span>
+                                    </span>
+
+                                    <div class="f gap-05 f-center">
+                                        <p>Total =</p>
+                                        <p id="currency-symb">৳</p>
+                                        <p id="product-total">1030</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <button class="btn btn-error deleteCartBtn" onclick="deleteCart(this)">
+                                    <i class="m-trash White"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

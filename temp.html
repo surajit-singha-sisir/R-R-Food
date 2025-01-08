@@ -1,118 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-    <link rel="stylesheet" href="https://surajit-singha-sisir.github.io/mastorsCDN/mastors.css">
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js?v=3.10.0e"></script>
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js?v=3.10.0e"></script>
-    <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js?v=3.10.0e"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
-        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js?v=3.10.0e"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Draggable.min.js"
-        integrity="sha512-G7Wpe/pbg+zjyyM9HgQY6kacLAy+580lmA8DUXmZtioTI5FkaCRoLOaCLoeblrZABs7KZFD03cfSV9j7nmwxfw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"
-        integrity="sha512-omCJ8S/xl+DUjxNTqvhVSptHwIEi0IDp52n63HEj8ThJgSK/8Lcpi9btnTdE8db+Y4cDKZrZ7NQZBX4PKN4i4g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Scroll Effects</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth; /* Enables smooth scrolling */
+    }
+
+    .scroll-container {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory; /* Vertical snapping */
+      scrollbar-width: thin; /* Custom scrollbar for Firefox */
+      scrollbar-color: #888 #f0f0f0;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .scroll-container::-webkit-scrollbar-track {
+      background: #f0f0f0;
+    }
+
+    .scroll-container::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 4px;
+    }
+
+    .scroll-container::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    .scroll-item {
+      scroll-snap-align: start; /* Each section aligns at the top */
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      font-family: Arial, sans-serif;
+      color: white;
+      position: relative;
+      transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
+
+    .scroll-item:nth-child(odd) {
+      background: #007bff;
+    }
+
+    .scroll-item:nth-child(even) {
+      background: #28a745;
+    }
+
+    .scroll-item:hover {
+      transform: scale(1.05);
+    }
+
+    .indicator {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+    }
+  </style>
 </head>
-<style>
-    body {
-        font-family: Roboto, sans-serif;
-    }
-
-    .carousel {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        transform: rotateX(-20deg) translateY(-70px);
-        transform-style: preserve-3d;
-        perspective: 800px;
-        user-select: none;
-        cursor: grab;
-    }
-
-    .carousel-image {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin: -100px 0 0 -100px;
-        width: 200px;
-        height: 200px;
-        transform: translate3d(0, 0, -10px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: #fff;
-        background: #fff !important;
-        transform-origin: 50% 50%;
-    }
-
-    @media (max-width: 600px) {
-        .carousel {
-            transform: rotateX(-10deg) scale(.6) translateY(-60px);
-        }
-    }
-</style>
-
 <body>
-    <div class="carousel">
-        <div class="carousel-image w-100"><img class="w-100 h--200" src="assets/product-1.png" alt=""></div>
-        <div class="carousel-image w-100"><img class="w-100 h--200" src="assets/product-2.png" alt=""></div>
-        <div class="carousel-image w-100"><img class="w-100 h--200" src="assets/product-3.png" alt=""></div>
-        <div class="carousel-image w-100"><img class="w-100 h--200" src="assets/product-4.png" alt=""></div>
-        <div class="carousel-image w-100"><img class="w-100 h--200" src="assets/product-5.png" alt=""></div>
-        <div class="carousel-image w-100"><img class="w-100 h--200" src="assets/product-6.png" alt=""></div>
-        <div class="carousel-image w-100"><img class="w-100 h--200" src="assets/product-7.png" alt=""></div>
-        <div class="carousel-image w-100"><img class="w-100 h--200" src="assets/product-8.png" alt=""></div>
-    </div>
+  <div class="indicator">Scroll down ⬇</div>
+  <div class="scroll-container">
+    <section class="scroll-item">Section 1</section>
+    <section class="scroll-item">Section 2</section>
+    <section class="scroll-item">Section 3</section>
+    <section class="scroll-item">Section 4</section>
+    <section class="scroll-item">Section 5</section>
+  </div>
 </body>
-<script>
-    const images = document.querySelectorAll('.carousel-image')
-    const radius = 242
-    const progress = {
-        value: 0
-    }
-    const carousel = document.querySelector('.carousel')
-
-    Observer.create({
-        target: carousel,
-        type: "wheel,pointer",
-        onPress: (self) => {
-            carousel.style.cursor = 'grabbing'
-        },
-        onRelease: (self) => {
-            carousel.style.cursor = 'grab'
-        },
-        onChange: (self) => {
-            gsap.killTweensOf(progress)
-            const p = self.event.type === 'wheel' ? self.deltaY * -.0005 : self.deltaX * .05
-            gsap.to(progress, {
-                duration: 2,
-                ease: 'power4.out',
-                value: `+=${p}`
-            })
-        }
-    })
-
-    const animate = () => {
-        images.forEach((image, index) => {
-            const theta = index / images.length - progress.value
-            const x = -Math.sin(theta * Math.PI * 2) * radius
-            const y = Math.cos(theta * Math.PI * 2) * radius
-            image.style.transform = `translate3d(${x}px, 0px, ${y}px) rotateY(${360 * -theta}deg)`
-            const c = Math.floor(index / images.length * 360)
-            image.style.background = `hsla(${c}, 90%, 50%, .5)`
-        })
-    }
-    gsap.ticker.add(animate)
-</script>
-
 </html>
