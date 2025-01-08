@@ -1,3 +1,5 @@
+import { showToast } from "https://surajit-singha-sisir.github.io/mastorsCDN/mastors.js";
+
 // // NAV-1 JS
 function toggleNavbar(hamb) {
   const items = hamb.parentElement.querySelector(".nav-items");
@@ -155,8 +157,6 @@ function modalBox() {
   modal.style.width = modal.getAttribute("modal-width");
   modal.style.height = modal.getAttribute("modal-height");
   const scroller = modal.getAttribute("scroller");
-  console.log(scroller);
-
   openModal.addEventListener("click", () => {
     modalOverlay.style.display = "flex";
     modal.classList.remove("modal-out");
@@ -169,28 +169,99 @@ function modalBox() {
     }, 2000);
   });
 
-  const closeModal = document.getElementById("closeModalBox");
-  closeModal.addEventListener("click", () => {
-    modal.classList.remove("modal-in");
-    modal.classList.add("modal-out");
-    // After the animation ends, hide the modal
-    modal.addEventListener(
-      "animationend",
-      () => {
-        modalOverlay.style.display = "none";
-        modal.classList.remove("modal-out");
+  const closeModals = document.querySelectorAll("#closeModalBox");
+  closeModals.forEach((closeModal) => {
+    closeModal.addEventListener("click", () => {
+      modal.classList.remove("modal-in");
+      modal.classList.add("modal-out");
+      // After the animation ends, hide the modal
+      modal.addEventListener(
+        "animationend",
+        () => {
+          modalOverlay.style.display = "none";
+          modal.classList.remove("modal-out");
 
-        if (scroller == "true") {
-          document.body.style = "overflow: auto !important;";
-        }
-      },
-      { once: true }
-    );
+          if (scroller == "true") {
+            document.body.style = "overflow: auto !important;";
+          }
+        },
+        { once: true }
+      );
+    });
   });
 }
 
-
 function cartBox() {
-  const cartOverlay = document.getElementById("cartOverlay");
-  const cart = cartOverlay.querySelector(".cart");
+  let cartContainer = document.querySelectorAll(".cart-trs"); // Store the initial collection
+
+  cartContainer.forEach((cart) => {
+    // QUANTITY
+    function qty() {
+      const cartPlus = cart.querySelector("#cart-plus");
+      const cartMinus = cart.querySelector("#cart-minus");
+      const cartCount = cart.querySelector("#cart-count");
+
+      cartPlus.addEventListener("click", () => {
+        const count = parseInt(cartCount.textContent);
+        cartCount.textContent = count + 1;
+        if (count + 1 >= 1) {
+          cartMinus.disabled = false;
+        }
+      });
+
+      cartMinus.addEventListener("click", () => {
+        let count = parseInt(cartCount.textContent);
+        if (count > 1) {
+          cartCount.textContent = count - 1;
+        }
+        if (count - 1 < 1) {
+          showToast("At least 1 item", "warning");
+          cartMinus.disabled = true;
+        }
+      });
+    }
+    qty();
+
+    // SERIAL
+    function serial() {
+      const cartSerials = document.querySelectorAll(".serials");
+
+      cartSerials.forEach((serial, index) => {
+        serial.textContent = index + 1;
+      });
+    }
+    serial();
+
+    // SHOW EMPTY HTML
+    function showEmptyHTML() {
+      const tbody = document.querySelector(".cart-table tbody");
+      const emptyBox = document.getElementById("no-cart-data");
+
+      // if (tbody.children.length < 1) {
+      //   emptyBox.classList.toggle("hide");
+      //   showToast("No Cart Data Available", "error");
+      // }
+
+      cartContainer = document.querySelectorAll(".cart-trs");
+      if (cartContainer.length < 1) {
+        emptyBox.classList.toggle("hide");
+      } else {
+        emptyBox.classList.add("hide");
+      }
+    }
+    showEmptyHTML();
+
+    // DELETE
+    function deleteCart() {
+      const cartDelete = cart.querySelector("#deleteCartBtn");
+      cartDelete.addEventListener("click", (event) => {
+        cart.remove();
+
+        // SERIAL UPDATE
+        serial();
+        showEmptyHTML();
+      });
+    }
+    deleteCart();
+  });
 }

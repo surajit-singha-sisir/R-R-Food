@@ -765,5 +765,14 @@ nav.navbar-1 .nav-container .nav-items span {
 .deleteCartBtn i {
   margin-left: -8px;
 }
-
+.inner-empty-cart {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.inner-empty-cart a {
+  width: 10rem;
+}
 /* COMBOBOX */
