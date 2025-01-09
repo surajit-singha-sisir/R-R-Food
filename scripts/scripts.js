@@ -1,37 +1,5 @@
 import { showToast } from "https://surajit-singha-sisir.github.io/mastorsCDN/mastors.js";
 
-// // NAV-1 JS
-function toggleNavbar(hamb) {
-  const items = hamb.parentElement.querySelector(".nav-items");
-  const bgDark = document.getElementById("bg-dark");
-
-  if (items.classList.contains("navAnimation")) {
-    // Close navbar
-    items.classList.remove("navAnimation");
-    items.classList.add("navExitAnimation");
-    bgDark.classList.remove("bgDarkAnimation");
-    bgDark.classList.add("bgDarkExitAnimation");
-  } else {
-    items.classList.remove("navExitAnimation");
-    items.classList.add("navAnimation");
-    bgDark.classList.remove("bgDarkExitAnimation");
-    bgDark.classList.add("bgDarkAnimation");
-
-    const handleOutsideClick = (event) => {
-      if (!items.contains(event.target) && !hamb.contains(event.target)) {
-        // Close the navbar if the click is outside
-        items.classList.remove("navAnimation");
-        items.classList.add("navExitAnimation");
-        bgDark.classList.remove("bgDarkAnimation");
-        bgDark.classList.add("bgDarkExitAnimation");
-
-        document.removeEventListener("click", handleOutsideClick);
-      }
-    };
-    document.addEventListener("click", handleOutsideClick);
-  }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const products = document.querySelectorAll(".slide-product .product");
 
@@ -110,40 +78,6 @@ function updatePrice() {
   });
 }
 
-function cart(item) {
-  if (item.dataset.disabled === "true") return;
-
-  item.dataset.disabled = "true";
-
-  function anim() {
-    const icon = item.querySelector(".m-plus-circle");
-    const p = item.querySelector("p");
-    if (icon && p) {
-      icon.classList.add("hide");
-      p.classList.add("hide");
-      const animImg = document.createElement("img");
-      animImg.src = "../assets/cart-added.gif";
-      const div = item.querySelector("div");
-      div.appendChild(animImg);
-      if (!div.classList.contains("cart-animation")) {
-        div.classList.toggle("cart-animation");
-      }
-
-      setTimeout(() => {
-        icon.classList.remove("hide");
-        p.classList.remove("hide");
-        item.dataset.disabled = "false";
-
-        const anim = item.querySelector(".cart-animation img");
-        if (anim) {
-          anim.closest("div").classList.toggle("cart-animation");
-          anim.remove();
-        }
-      }, 3000);
-    }
-  }
-  anim();
-}
 function modalBox() {
   const modalOverlay = document.getElementById("modalOverlay");
   const modal = modalOverlay.querySelector(".modal");
@@ -207,6 +141,7 @@ function cartBox() {
         if (count + 1 >= 1) {
           cartMinus.disabled = false;
         }
+        cartAmUpdate();
       });
 
       cartMinus.addEventListener("click", () => {
@@ -218,7 +153,22 @@ function cartBox() {
           showToast("At least 1 item", "warning");
           cartMinus.disabled = true;
         }
+        cartAmUpdate();
       });
+
+      function cartAmUpdate() {
+        const x = cart.querySelector("#cart-count");
+        const y = cart.querySelector("#qty");
+        const p = cart.querySelector("#price");
+        y.textContent = x.textContent;
+        console.log(x);
+        
+
+        let total = cart.querySelector("#product-total");
+        const counter = parseInt(p.textContent, 10);
+        const amount = parseInt(y.textContent, 10);
+        total.textContent = counter * amount;
+      }
     }
     qty();
 
